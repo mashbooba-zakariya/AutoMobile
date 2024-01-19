@@ -1,0 +1,90 @@
+{% extends 'customerDashboard/customer_base.html' %}
+
+{% block content %}
+
+
+
+<!--  {% for s in schedule %}-->
+<!--      <div class="card" style="width: 18rem;">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title">{{s.date}}</h5>-->
+<!--          <h6 class="card-subtitle mb-2 text-muted">{{s.Start_time}}</h6>-->
+<!--          <h6 class="card-subtitle mb-2 text-muted">{{s.end_time}}</h6>-->
+<!--          <p class="card-text">card's content.</p>-->
+<!--          <a href="#" class="card-link">Card link</a>-->
+<!--          <a href="#" class="card-link">Another link</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--  {% endfor %}-->
+
+
+
+<!--<div class="card">-->
+<!--        <div class="card-header">-->
+<!--            <strong class="card-title"> SLOT AVAILABLE </strong>-->
+<!--        </div>-->
+<!--        <br>-->
+
+<!--        <div class="card-body">-->
+<!--            <table class="table table-striped">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">SL NO</th>-->
+<!--                    <th scope="col">Start_time</th>-->
+<!--                    <th scope="col">End_time</th>-->
+
+
+<!--                </tr>-->
+<!--                </thead>-->
+
+
+<!--                <tbody>-->
+<!--                {% for s in appointment %}-->
+<!--                <tr>-->
+<!--                    <th scope="row">{{forloop.counter}}</th>-->
+<!--                    <td>{{s.date}}</td>-->
+
+<!--                    <td>{{s.Start_time}}</td>-->
+
+<!--                    <td>{{s.end_time}}</td>-->
+<!--                {% empty %}-->
+
+<!--                </tr>-->
+
+<!--                <tr>-->
+<!--                    <td colspan="7"><h3>No Results Found</h3></td>-->
+<!--                </tr>-->
+<!--                {% endfor %}-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+<h2>Book Appointment</h2>
+
+    <p>Schedule Details:</p>
+    <p>Date: {{ schedule.date }}</p>
+    <p>Time: {{ schedule.time }}</p>
+    <!-- Add more schedule details as needed -->
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="submit" value="Book Appointment">
+    </form>
+
+{% endblock %}

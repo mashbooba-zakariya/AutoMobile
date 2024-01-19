@@ -1,0 +1,29 @@
+
+{% extends 'customerDashboard/customer_base.html' %}
+
+{% block content %}
+
+<!--{{appointment}}-->
+
+
+
+
+
+<h2>Your Appointments</h2>
+
+    {% if appointment %}
+        <ul>
+            {% for apt in appointment %}
+                <li>
+                    <p>Schedule Details:</p>
+                    <p>Date: {{ apt.schedule.date }}</p>
+                    <p>Time: {{ apt.schedule.time }}</p>
+                    <!-- Add more schedule details as needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No appointments found.</p>
+    {% endif %}
+
+{% endblock %}

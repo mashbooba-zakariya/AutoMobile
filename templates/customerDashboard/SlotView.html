@@ -1,0 +1,20 @@
+{% extends 'customerDashboard/customer_base.html' %}
+
+{% block content %}
+
+
+
+  {% for s in slot %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+
+          <h5 class="card-title">{{s.date}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{s.Start_time}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">{{s.end_time}}</h6>
+
+         <button><a href="{% url 'SlotBooking' s.id %}" class="card-link">Book Appointment </a></button>
+
+        </div>
+      </div>
+  {% endfor %}
+{% endblock %}

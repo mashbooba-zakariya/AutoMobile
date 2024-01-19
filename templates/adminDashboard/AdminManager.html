@@ -1,0 +1,57 @@
+{% extends 'adminDashboard/admin_base.html' %}
+
+
+{% block content %}
+
+<div class="col-lg-10">
+
+    <div class="card">
+
+        <div class="card-header">
+            <strong class="card-title"> Work Manager LIST</strong>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">SL NO</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">Manager ID</th>
+                         <th scope="col">UPDATE</th>
+                         <th scope="col">DELETE</th>
+                    </tr>
+                </thead>
+        <tbody>
+            {% for n in data %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.name}}</td>
+                    <td>{{n.ManagerId}}</td>
+                    <td>
+                        <a href="{% url 'AdminManagerUpdate' n.id %}">
+                            <button type="button" class="btn btn-primary">Update</button>
+                        </a>
+                    </td>
+                     <td>
+                        <form action="{% url 'AdminManagerDelete' n.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger waves-effect width-md waves-light">Delete
+                            </button>
+                        </form>
+                    </td>
+
+
+            {% empty %}
+                <tr>
+                    <td colspan="7"><h3>No Results Found</h3></td>
+                </tr>
+                {% endfor %}
+        </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
